@@ -23,19 +23,18 @@ var jsonRpcTcpServer = new Server(new ServerTcp(8001), {
     loopback: function(obj, callback) { callback(undefined, obj); }
 });
 
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-
-
-var jsonRpcMiddlewareServer = new Server(new ServerMiddleware(), {
-    loopback: function(obj, callback) { callback(undefined, obj); }
-});
-app.use('/rpc', jsonRpcMiddlewareServer.transport.middleware);
-app.listen(8002);
+//var express = require('express');
+//var app = express();
+//var bodyParser = require('body-parser');
+//
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({extended: false}));
+//
+//var jsonRpcMiddlewareServer = new Server(new ServerMiddleware(), {
+//    loopback: function(obj, callback) { callback(undefined, obj); }
+//});
+//app.use('/rpc', jsonRpcMiddlewareServer.transport.middleware);
+//app.listen(8002);
 
 var loopback = new Loopback();
 var jsonRpcLoopbackServer = new Server(loopback, {
