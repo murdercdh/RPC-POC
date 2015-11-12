@@ -54,12 +54,15 @@ var jsonRpcHttpServer = new Server(new ServerHttp(8000), {
 var jsonRpcHttpClient = new Client(new ClientHttp('localhost', 8000));
 jsonRpcHttpClient.register('loopback');
 jsonRpcHttpClient.register("cityinfo");
-jsonRpcHttpClient.loopback('foo', function(err, val) {
+jsonRpcHttpClient.loopback('foo', function (err, val) {
     console.log(val); // Prints 'foo'
 });
-jsonRpcHttpClient.cityinfo(null,function(err,result){
-    console.log(result);
-})
+
+for (var i = 0; i < 1000; i++) {
+    jsonRpcHttpClient.cityinfo(null, function (err, result) {
+        console.log(result);
+    })
+}
 
 // Or wait for the "auto-register" functionality do that for you
 //new Client(new ClientTcp('localhost', 8001), {}, function(jsonRpcTcpClient) {
