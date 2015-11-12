@@ -7,6 +7,7 @@ var db = require("../common/mysql_helper.js");
 var util = require("util");
 var _ = require("lodash");
 var request = require("request");
+var async = require("async");
 
 exports.add = function (req, res, next) {
     var cp = req.body;
@@ -46,19 +47,41 @@ exports.get = function (req, res, next) {
     }
 }
 
+function getAbbr(input, cb) {
+    var sqlQuery = "SELECT city,abbr FROM rrc_front.cm_cities where online = 1 and city!='全国' order by abbr asc";
+    db.ExecuteQuery(sqlQuery, cb);
+}
+
 function getCityByIP(ip, cb) {
     var sqlQuery = util.format("select address from (SELECT * FROM (cm_ip) WHERE ip1 <= '%s' order by ip1 desc limit 10) as a where a.ip2 >= '%s'", ip, ip);
     db.ExecuteQuery(sqlQuery, cb);
 }
 
-exports.rpcGet=function(req,res,next){
-    var url="http://api.renrenche.com/citylist";
+exports.rpcGet = function (req, res, next) {
+    var url = "http://api.renrenche.com/citylist";
     //var url="http://localhost;8081/citylist";
-    request.get(url,  function (err, response, body) {
-        if(err) next(error.ServerInternalError);
-        var rt=JSON.parse(body)
+    request.get(url, function (err, response, body) {
+        if (err) next(error.ServerInternalError);
+        var rt = JSON.parse(body)
         res.json(rt);
     })
+}
+exports.mrpcGet = function (obj, cb) {
+    var ip = obj;
+    var result = {};
+    if (ip) {
+        async.series([function a(cb) {
+            getAbbr(null, cb);
+        }, function b(cb) {
+            getCityByIP(null, cb);
+        }], function (err, result) {
+            result.cities = result[0];
+            result.current_city = result[1];
+            cb(err, result);
+        })
+    } else {
+        cb(null, null);
+    }
 }
 
 exports.deleteById = function (req, res, next) {
