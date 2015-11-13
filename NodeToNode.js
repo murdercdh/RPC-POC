@@ -1,6 +1,7 @@
 /**
  * Created by Administrator on 2015/11/12.
  */
+
 var jsonrpc = require('multitransport-jsonrpc'); // Get the multitransport JSON-RPC suite
 var cityCtl = require("./controller/city_controller.js");
 var Server = jsonrpc.server; // The server constructor function
@@ -20,7 +21,7 @@ var jsonRpcHttpServer = new Server(new ServerHttp(8000), {
         callback(undefined, obj);
     },
     cityinfo: function (obj, callback) {
-        cityCtl.mrpcGet("16777216", callback)
+        cityCtl.mrpcGet(obj, callback)
     }
 });
 
@@ -54,14 +55,19 @@ var jsonRpcHttpServer = new Server(new ServerHttp(8000), {
 var jsonRpcHttpClient = new Client(new ClientHttp('localhost', 8000));
 jsonRpcHttpClient.register('loopback');
 jsonRpcHttpClient.register("cityinfo");
-jsonRpcHttpClient.loopback('foo', function (err, val) {
-    console.log(val); // Prints 'foo'
-});
 
-for (var i = 0; i < 1000; i++) {
-    jsonRpcHttpClient.cityinfo(null, function (err, result) {
-        console.log(result);
-    })
+//jsonRpcHttpClient.loopback('foo', function (err, val) {
+//    console.log(val); // Prints 'foo'
+//});
+console.time("1000times");
+for (var i = 0; i < 100; i++) {
+    (function a(obj) {
+        jsonRpcHttpClient.cityinfo(obj, function (err, result) {
+            if(err) return;
+            //console.log(result.length);
+            console.timeEnd("1000times");
+        })
+    })(i);
 }
 
 // Or wait for the "auto-register" functionality do that for you

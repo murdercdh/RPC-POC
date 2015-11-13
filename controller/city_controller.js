@@ -53,6 +53,7 @@ function getAbbr(input, cb) {
 }
 
 function getCityByIP(ip, cb) {
+    ip = db.pool.escape(ip);
     var sqlQuery = util.format("select address from (SELECT * FROM (cm_ip) WHERE ip1 <= '%s' order by ip1 desc limit 10) as a where a.ip2 >= '%s'", ip, ip);
     db.ExecuteQuery(sqlQuery, cb);
 }
@@ -73,7 +74,7 @@ exports.mrpcGet = function (obj, cb) {
         async.series([function a(cb) {
             getAbbr(null, cb);
         }, function b(cb) {
-            getCityByIP(null, cb);
+            getCityByIP(ip, cb);
         }], function (err, result) {
             result.cities = result[0];
             result.current_city = result[1];
