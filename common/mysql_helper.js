@@ -1,16 +1,10 @@
 var mysql = require("mysql");
+var config = require("../config.js");
 var redisHelper = require('./redis_helper.js');
 var crypto = require('crypto');
 
-function DbHelper(config) {
-    this.pool = mysql.createPool({
-        connectionLimit: 10,
-        host: '101.200.220.24',
-        user: 'root',
-        password: '123456',
-        database: 'rrc_front',
-        multipleStatements: true
-    });
+function DbHelper() {
+    this.pool = mysql.createPool(config.MysqlSettings);
     this.mysql = mysql;
 }
 

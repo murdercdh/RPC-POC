@@ -5,7 +5,8 @@ var request = require("request");
 var async = require("async");
 
 function requestMainSite(cb) {
-    var url = "http://api.renrenche.com/citylist";
+    //var url = "http://api.renrenche.com/citylist";
+    var url="http://localhost:9003/v3/city";
     request(url, function (err, repo, body) {
         if (err) return cb(err, null);
         var ret = JSON.parse(body);

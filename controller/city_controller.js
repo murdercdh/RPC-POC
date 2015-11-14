@@ -31,15 +31,22 @@ exports.add = function (req, res, next) {
 exports.get = function (req, res, next) {
     var sqlQuery = "SELECT city,abbr FROM rrc_front.cm_cities where online = 1 and city!='全国' order by abbr asc";
     var ip = _.trim(req.ip, '.');
+    ip = 16909312;
     var result = {};
     if (ip) {
         getCityByIP(ip, function (err, result1) {
-            if (err) next(error.ServerInternalError);
-            result.current_city = result1;
-            db.ExecuteQuery(sqlQuery, function (err, result2) {
-                if (err) next(error.ServerInternalError);
-                result.cities = result2;
-                res.json(result);
+            if (err) return next(error.ServerInternalError);
+            if (result1.length > 0) {
+                result.current_city = result1[0].address;
+            }
+            getAbbr(result, function (err, result2) {
+                if (err) return next(error.ServerInternalError);
+                //result.cities = result2;
+                if (result2.length > 0) {
+                    result.cities = _.pluck(result2, 'city');
+                    result.cities_abbr = _.pluck(result2, 'abbr');
+                    res.json(result);
+                }
             });
         })
     } else {
@@ -59,14 +66,15 @@ function getCityByIP(ip, cb) {
 }
 
 exports.rpcGet = function (req, res, next) {
-    var url = "http://api.renrenche.com/citylist";
+    var url = "http://localhost:9003/v3/city";
     //var url="http://localhost;8081/citylist";
     request.get(url, function (err, response, body) {
         if (err) next(error.ServerInternalError);
-        var rt = JSON.parse(body)
+        var rt = JSON.parse(body);
         res.json(rt);
     })
 }
+
 exports.mrpcGet = function (obj, cb) {
     var ip = obj;
     var result = {};

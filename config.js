@@ -5,6 +5,15 @@ var config = {
 
     APP_NAME: process.env.APP_NAME || 'rpc',
 
+    MysqlSettings:{
+        connectionLimit: 10,
+        host: '101.200.220.24',
+        port: '8111',
+        user: 'root',
+        password: '123456',
+        database: 'rrc_front',
+        multipleStatements: true
+    },
     MongoSettings: {
         mongodb: "mongodb://localhost:27017/rpc",
         mongodbName: "rpc"
