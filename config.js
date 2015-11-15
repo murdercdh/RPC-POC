@@ -19,12 +19,12 @@ var config = {
         TokenSavePeriod: 90
     },
 
-    WECHAT_FITCAMP_APP_ID: 'wx68cb65d7889c5fea',
-    WECHAT_FITCAMP_APP_SECRET: '8dbf708f83150bd5d0a6c57ecbb93548',
-    WECHAT_FITCAMP_MCHID: "1247798901",
+    WECHAT_FITCAMP_APP_ID: '',
+    WECHAT_FITCAMP_APP_SECRET: '',
+    WECHAT_FITCAMP_MCHID: "",
 
     MAX_LOGIN_ATTEMPTS: 500,
-    DefaultPassword: "sha256$f8a51c6d9b$1$ff98e70c1b2d2d0a75561c69bc7b40db4cf2a57c313621de3fe1dea5b6de2a0b",
+    DefaultPassword: "",
     OAUTH_TYPE: {
         WECHAT: "wechat",
         WEIBO: "weibo"
@@ -37,9 +37,9 @@ var config = {
     OAUTH_SERVER_URI: "http://internal-nginx.rjft.net",
     SENTRY_DSN: "http://17ec14e874bf4be1ba520f74069d77b5:415f305b5d1e49ec9bb8d5e615eed982@dev.rjft.net/4",
 
-    QINIU_ACCESS_KEY: 'zeTgpUmrngNlxdek38_vi-sABFknlxrpMwTzhLaV',
-    QINIU_SECRET_KEY: '5TT67ebzZwj9oEBkSObVsG49i4NFcxAaqy9YbnpU',
-    QINIU_BUCKET_NAME: 'ppt-cdn',
+    QINIU_ACCESS_KEY: '',
+    QINIU_SECRET_KEY: '',
+    QINIU_BUCKET_NAME: '',
 
     AUTO_GROUP_SIZE:15,
 
