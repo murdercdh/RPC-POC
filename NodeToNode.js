@@ -59,7 +59,7 @@ jsonRpcHttpClient.register("cityinfo");
 //jsonRpcHttpClient.loopback('foo', function (err, val) {
 //    console.log(val); // Prints 'foo'
 //});
-console.time("1000times");
+console.time("1000 times");
 for (var i = 0; i < 1000; i++) {
     (function a(obj) {
         jsonRpcHttpClient.cityinfo(obj, function (err, result) {

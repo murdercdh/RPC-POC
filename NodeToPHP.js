@@ -15,7 +15,7 @@ function requestMainSite(cb) {
     })
 }
 function main() {
-    console.time("100times");
+    console.time("100 times");
     async.times(100, function (n, next) {
         requestMainSite(next);
     }, function (err, result) {

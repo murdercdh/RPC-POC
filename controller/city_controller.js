@@ -31,7 +31,7 @@ exports.add = function (req, res, next) {
 exports.get = function (req, res, next) {
     var sqlQuery = "SELECT city,abbr FROM rrc_front.cm_cities where online = 1 and city!='全国' order by abbr asc";
     var ip = _.trim(req.ip, '.');
-    ip = 16909312;
+    ip = "";
     var result = {};
     if (ip) {
         getCityByIP(ip, function (err, result1) {
