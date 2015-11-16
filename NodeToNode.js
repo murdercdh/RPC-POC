@@ -60,12 +60,12 @@ jsonRpcHttpClient.register("cityinfo");
 //    console.log(val); // Prints 'foo'
 //});
 console.time("1000times");
-for (var i = 0; i < 100; i++) {
+for (var i = 0; i < 1000; i++) {
     (function a(obj) {
         jsonRpcHttpClient.cityinfo(obj, function (err, result) {
             if(err) return;
             //console.log(result.length);
-            console.timeEnd("1000times");
+            console.timeEnd("1000 times");
         })
     })(i);
 }
