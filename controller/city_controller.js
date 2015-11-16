@@ -84,6 +84,7 @@ exports.mrpcGet = function (obj, cb) {
         }, function b(cb) {
             getCityByIP(ip, cb);
         }], function (err, result) {
+            if (err) return cb(err, null);
             result.cities = result[0];
             result.current_city = result[1];
             cb(err, result);
