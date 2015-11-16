@@ -39,7 +39,7 @@ exports.get = function (req, res, next) {
             if (result1.length > 0) {
                 result.current_city = result1[0].address;
             }
-            getAbbr(result, function (err, result2) {
+            getAbbr(null, function (err, result2) {
                 if (err) return next(error.ServerInternalError);
                 //result.cities = result2;
                 if (result2.length > 0) {
@@ -95,12 +95,12 @@ exports.mrpcGet = function (obj, cb) {
 }
 
 exports.deleteById = function (req, res, next) {
-    var campaign_id = req.params.id;
-    if (campaign_id) {
-        Campaign.findByIdAndRemove(campaign_id).exec(function (err, result) {
-            if (err) return next(err);
-            res.json(result);
-        })
+    var id = req.params.id;
+    if (id) {
+        //Campaign.findByIdAndRemove(campaign_id).exec(function (err, result) {
+        //    if (err) return next(err);
+        //    res.json(result);
+        //})
     }
     else {
         next(new error.BadRequest());
@@ -108,12 +108,12 @@ exports.deleteById = function (req, res, next) {
 }
 
 exports.getById = function (req, res, next) {
-    var campaign_id = req.params.id;
-    if (campaign_id) {
-        Campaign.findById(campaign_id).exec(function (err, result) {
-            if (err) return next(err);
-            res.json(result);
-        });
+    var id = req.params.id;
+    if (id) {
+        //Campaign.findById(campaign_id).exec(function (err, result) {
+        //    if (err) return next(err);
+        //    res.json(result);
+        //});
     }
     else {
         next(new error.BadRequest());
@@ -121,13 +121,13 @@ exports.getById = function (req, res, next) {
 }
 
 exports.updateById = function (req, res, next) {
-    var campaign_id = req.params.id;
-    var campaign = req.body;
-    if (campaign_id && campaign) {
-        Campaign.findByIdAndUpdate(campaign_id, campaign, {new: true}).exec(function (err, result) {
-            if (err) return next(err);
-            res.json(result);
-        });
+    var id = req.params.id;
+    var body = req.body;
+    if (id && body) {
+        //Campaign.findByIdAndUpdate(campaign_id, campaign, {new: true}).exec(function (err, result) {
+        //    if (err) return next(err);
+        //    res.json(result);
+        //});
     }
     else {
         next(new error.BadRequest());
