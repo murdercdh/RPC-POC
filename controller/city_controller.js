@@ -8,6 +8,7 @@ var util = require("util");
 var _ = require("lodash");
 var request = require("request");
 var async = require("async");
+var searchR=require("../raw/searchRaw.js");
 
 exports.add = function (req, res, next) {
     var cp = req.body;
@@ -131,5 +132,11 @@ exports.updateById = function (req, res, next) {
     }
     else {
         next(new error.BadRequest());
+    }
+}
+
+exports.searchFilterRaw=function(req,res,next){
+    if(searchR){
+        res.json(searchR);
     }
 }
