@@ -5,6 +5,9 @@ var crypto = require('crypto');
 
 function DbHelper() {
     this.pool = mysql.createPool(config.MysqlSettings);
+    this.poolcluster=mysql.createPoolCluster();
+    this.poolcluster.add("master",{host:'10.44.187.164',user:'root',password:'123456',connectionLimit:10});
+    this.poolcluster.add("slave",{host:'10.44.187.164',user:'root',password:'123456',connectionLimit:10});
     this.mysql = mysql;
 }
 
