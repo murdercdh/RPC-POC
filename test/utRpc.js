@@ -20,3 +20,20 @@ describe('city has return value', function() {
             assert.equal(-1, [1,2,3].indexOf(0));
         });
 });
+
+describe('generator should bave the correct value',function(){
+    it('should generate works in 4.5',function(){
+        function* idMaker(){
+            var index = 0;
+            while(index < 3)
+                yield index++;
+        }
+
+        var gen = idMaker();
+
+        console.log(gen.next().value); // 0
+        console.log(gen.next().value); // 1
+        console.log(gen.next().value); // 2
+        console.log(gen.next().value); // undefined
+    })
+})
