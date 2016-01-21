@@ -1,5 +1,8 @@
 # RPC-POC
+
 [![Build Status](https://travis-ci.org/murdercdh/RPC-POC.svg?branch=master)](https://travis-ci.org/murdercdh/RPC-POC)
+[![node version][node-image]][node-url]
+
 其实这就是一个简单的RPC原型验证，JSON-RPC
 
     数据协议格式JSON，
