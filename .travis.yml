@@ -6,6 +6,7 @@ node_js:
 
 before_script:
   - npm install -g gulp
+  - npm install -g mocha
 
 env:
   - CXX=g++-4.8
