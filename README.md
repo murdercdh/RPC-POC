@@ -1,7 +1,19 @@
 # RPC-POC
 
-[![Build Status](https://travis-ci.org/murdercdh/RPC-POC.svg?branch=master)](https://travis-ci.org/murdercdh/RPC-POC)
+
+[![build status][travis-image]][travis-url]
 [![node version][node-image]][node-url]
+
+[travis-image]: https://travis-ci.org/murdercdh/RPC-POC.svg?branch=master
+[travis-url]: https://travis-ci.org/murdercdh/RPC-POC
+
+[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
+[node-url]: http://nodejs.org/download/
+
+[download-image]: https://travis-ci.org/murdercdh/RPC-POC
+[download-url]: https://travis-ci.org/murdercdh/RPC-POC
+
+
 
 其实这就是一个简单的RPC原型验证，JSON-RPC
 
