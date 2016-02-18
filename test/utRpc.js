@@ -31,6 +31,8 @@ describe('generator should bave the correct value',function(){
 
         var gen = idMaker();
 
+        console.log('for new test');
+
         console.log(gen.next().value); // 0
         console.log(gen.next().value); // 1
         console.log(gen.next().value); // 2
