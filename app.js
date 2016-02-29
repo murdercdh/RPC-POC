@@ -1,6 +1,8 @@
 var express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+
 //var sentry = require('./middleware/sentry.js');
 //var log = require('./common/log');
 var path = require('path');
@@ -22,6 +24,11 @@ var apiRouter = require("./routes/api_router.js");
 app.use(logger('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine({presets:['react']}));
 
 //engine = require('express-dot-engine');
 //app.engine('dot', engine.__express);

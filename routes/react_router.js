@@ -2,14 +2,14 @@
  * Created by donegalchen on 10/13/15.
  */
 var express = require('express');
-var cityCtl = require("../controller/city_controller.js");
 var passport = require('../middleware/passport.js');
 
 var router = module.exports = express.Router();
 
-router.get("/", cityCtl.get);
-router.get("/rpc",cityCtl.rpcGet);
-router.get("/searchFilterRaw",cityCtl.searchFilterRaw);
+router.get("/", function(req,res){
+    var co=req.cookies;
+    res.render('index',{name:co});
+});
 //router.post("/", cityCtl.add);
 
 //router.route("/:id")

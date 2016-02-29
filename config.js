@@ -8,11 +8,12 @@ var config = {
     MysqlSettings:{
         connectionLimit: 10,
         host: '10.44.187.164',
-        port: '8111',
+        port: '3306',
         user: 'root',
         password: '123456',
         database: 'rrc_front',
-        multipleStatements: true
+        multipleStatements: true,
+        charset:'utf8'
     },
     MongoSettings: {
         mongodb: "mongodb://localhost:27017/rpc",
