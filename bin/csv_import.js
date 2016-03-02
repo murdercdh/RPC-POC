@@ -56,6 +56,14 @@ converter.fromFile("../raw/installment.csv", function (err, result) {
         itemArr.url = re['更多车源链接'];
         itemArr.fee = re['贷款手续费'];
 
+        itemArr.rrc_fix_fee=re['人人车固定费用'];
+        itemArr.institution_fix_fee=re['金融机构固定费用'];
+
+        itemArr.additional_rates=re['增项服务费率'];
+
+        itemArr.mileage_limits=re['里程上限'];
+        itemArr.car_age_limits=re['车龄上限'];
+
         var month = re['产品费率/期限'].split('，');
         var plimit = re['贷款限额'].split('-');
 
