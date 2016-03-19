@@ -26,9 +26,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jsx');
-app.engine('jsx', require('express-react-views').createEngine({presets:['react']}));
+//app.set('views', __dirname + '/views');
+//app.set('view engine', 'jsx');
+//app.engine('jsx', require('express-react-views').createEngine({presets:['react']}));
 
 //engine = require('express-dot-engine');
 //app.engine('dot', engine.__express);

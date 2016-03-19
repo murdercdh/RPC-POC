@@ -10,6 +10,7 @@ var router = module.exports = express.Router();
 router.get("/", cityCtl.get);
 router.get("/rpc",cityCtl.rpcGet);
 router.get("/searchFilterRaw",cityCtl.searchFilterRaw);
+router.get('/points',cityCtl.getPoints);
 //router.post("/", cityCtl.add);
 
 //router.route("/:id")
