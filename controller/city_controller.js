@@ -971,15 +971,23 @@ exports.getPoints = function (req, res, next) {
         request.get(tpUrl, function (err, response, body) {
             if (err) return cb(error.ServerInternalError);
             body=JSON.parse(body);
-            console.log(body.address);
-            if(body.status==0) {
-                result.push({lng: body.content.point.x, lat: body.content.point.y, count: po.value});
-            }else{
-                console.log(body);
+            if(result[body.content.address]!=null){
+                cb();
             }
-            cb();
+            else{
+                result[body.content.address]={lng: body.content.point.x, lat: body.content.point.y, count: po.value};
+                cb();
+            }
         });
     }, function (err) {
+        console.log(result);
+        for(var tp in result){
+            result.push(result[tp]);
+        }
         res.json(result);
     });
+}
+
+exports.getGoPoints = function (req, res, next) {
+
 }

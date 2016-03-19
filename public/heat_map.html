@@ -4,9 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript"
-            src="http://api.map.baidu.com/api?v=2.0&ak=9eef5b2d2aee567c9583634cd98a89aa"></script>
-    <script type="text/javascript" src="../js/heatmap.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=9eef5b2d2aee567c9583634cd98a89aa"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
     <title>血压热力图</title>
     <style type="text/css">
         ul, li {
@@ -68,7 +67,7 @@
     $.get('/v3/points',function(points){
         heatmapOverlay = new BMapLib.HeatmapOverlay({"radius": 20});
         map.addOverlay(heatmapOverlay);
-        heatmapOverlay.setDataSet({data: points, max: 1000});
+        heatmapOverlay.setDataSet({data: points, max: 100});
     });
     //    var points = [
     //        {"lng": 116.418261, "lat": 39.921984, "count": 50},
@@ -198,12 +197,12 @@
          .5:'rgb(255, 170, 0)',
          1:'rgb(255, 0, 0)'
          }*/
-        var gradient = {};
-        var colors = document.querySelectorAll("input[type='color']");
-        colors = [].slice.call(colors, 0);
-        colors.forEach(function (ele) {
-            gradient[ele.getAttribute("data-key")] = ele.value;
-        });
+        var gradient = {100:'rgb(255,215,0)',110:'rgb(50,205,50)',120:'rgb(255,0,0)'};
+//        var colors = document.querySelectorAll("input[type='color']");
+//        colors = [].slice.call(colors, 0);
+//        colors.forEach(function (ele) {
+//            gradient[ele.getAttribute("data-key")] = ele.value;
+//        });
         heatmapOverlay.setOptions({"gradient": gradient});
     }
     //判断浏览区是否支持canvas
