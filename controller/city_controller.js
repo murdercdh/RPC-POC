@@ -966,28 +966,148 @@ exports.getPoints = function (req, res, next) {
     ];
     var result = [];
     var ip_api_url = 'http://api.map.baidu.com/location/ip?ak=9eef5b2d2aee567c9583634cd98a89aa&coor=bd09ll';
-    async.each(point, function (po,cb) {
+    async.each(point, function (po, cb) {
         var tpUrl = ip_api_url + '&ip=' + po.ip;
         request.get(tpUrl, function (err, response, body) {
             if (err) return cb(error.ServerInternalError);
-            body=JSON.parse(body);
-            if(result[body.content.address]!=null){
+            body = JSON.parse(body);
+            if (result[body.content.address] != null) {
                 cb();
             }
-            else{
-                result[body.content.address]={lng: body.content.point.x, lat: body.content.point.y, count: po.value};
+            else {
+                result[body.content.address] = {lng: body.content.point.x, lat: body.content.point.y, count: po.value};
                 cb();
             }
         });
     }, function (err) {
         console.log(result);
-        for(var tp in result){
+        for (var tp in result) {
             result.push(result[tp]);
         }
         res.json(result);
     });
 }
 
-exports.getGoPoints = function (req, res, next) {
+exports.getDisease = function (req, res, next) {
+    var disease = {
+        "Disease": [
+            {
+                "name": "disease 1",
+                "diagnosis_time": "2015-08-24",
+                "Tests": [
+                    {
+                        "name": "血压-舒张压",
+                        "value": 80,
+                        "result": 0,
+                        "testTime": "2016-3-25 14:45"
+                    },
+                    {
+                        "name": "血压-收缩压",
+                        "value": 125,
+                        "result": 1,
+                        "testTime": "2016-3-25 14:45"
+                    },
+                    {
+                        "name": "脉率",
+                        "value": 45,
+                        "result": 2,
+                        "testTime": "2016-3-25 18:08"
+                    },
+                    {
+                        "name": "体温",
+                        "value": 37.5,
+                        "result": 0,
+                        "testTime": "2016-4-1 14:45"
+                    }
+                ],
+                "Symptoms": [
+                    {
+                        "name": "chest pain",
+                        "desc": "中度",
+                        "start_time": "2016-3-1",
+                        "end_time": "2016-4-1"
+                    },
+                    {
+                        "name": "气喘",
+                        "desc": "运动后气喘",
+                        "start_time": "2015-2-1",
+                        "end_time": "2015-2-1"
+                    }
+                ],
+                "Medicines": [
+                    {
+                        "name": "*****药物 1",
+                        "desc": "每天半片",
+                        "start_time": "2006-06-10",
+                        "end_time": "2016-01-01"
+                    },
+                    {
+                        "name": "?????药物 2",
+                        "desc": "每天3次，每次2片",
+                        "start_time": "2016-03-10",
+                        "end_time": "2016-01-01"
+                    }
+                ]
+            },
+            {
+                "name": "disease 2",
+                "diagnosis_time": "2015-10-5",
+                "Tests": [
+                    {
+                        "name": "血压-舒张压",
+                        "value": 52,
+                        "result": 2,
+                        "testTime": "2015-10-25 14:45"
+                    },
+                    {
+                        "name": "血压-收缩压",
+                        "value": 96,
+                        "result": 2,
+                        "testTime": "2015-10-25 14:45"
+                    },
+                    {
+                        "name": "脉率",
+                        "value": 60,
+                        "result": 2,
+                        "testTime": "2016-10-25 18:08"
+                    },
+                    {
+                        "name": "体温",
+                        "value": 38,
+                        "result": 0,
+                        "testTime": "2016-3-1 14:45"
+                    }
+                ],
+                "Symptoms": [
+                    {
+                        "name": "眩晕",
+                        "desc": "轻度",
+                        "start_time": "2015-5-12",
+                        "end_time": "2016-4-1"
+                    },
+                    {
+                        "name": "腹痛",
+                        "desc": "饭后腹痛",
+                        "start_time": "2016-4-1",
+                        "end_time": "2016-4-1"
+                    }
+                ],
+                "Medicines": [
+                    {
+                        "name": "*****药物 1",
+                        "desc": "每天半片",
+                        "start_time": "2016-03-10",
+                        "end_time": "2016-4-01"
+                    },
+                    {
+                        "name": "?????药物 2",
+                        "desc": "每天3次，每次2片",
+                        "start_time": "2016-03-10",
+                        "end_time": "2016-03-10"
+                    }
+                ]
+            }
+        ]
+    }
 
 }
