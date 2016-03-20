@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel='stylesheet' href='stylesheets/bootstrap.min.css'/>
+    <link rel='stylesheet' href='stylesheets/style.css'/>
+    <link rel='stylesheet' href='stylesheets/bootstrap-datetimepicker.min.css'/>
+    <script src="javascripts/jQuery.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+    <script src="javascripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="javascripts/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="javascripts/knockout.js"></script>
+    <script src="javascripts/highcharts.js"></script>
+    <script src="javascripts/iChart.js"></script>
+    <script src="javascripts/temp/analysisData.js"></script>
+    <script src="javascripts/business/compare.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="compare">
+    <div class="title_top">
+        <button id="btn_road" class="btn_mode">图文模式</button>
+        <button id="btn_anaylysis" class="btn_mode">分析模式</button>
+        <input class="input_date" data-date-format="dd/MM/yyyy"/>—<input class="input_date"
+                                                                         data-date-format="dd/MM/yyyy"/>
+        <button id="btn_compare" class="btn_compare">开始对比</button>
+        <button class="btn_add_company" id="btn_AddCom">+对比(0)</button>
+        <div class="act_container">
+            <span class="btn_act btn_down" title="下载"></span><span class="btn_act btn_print" title="打印"></span>
+        </div>
+    </div>
+    <div class="content">
+    </div>
+</div>
+
+<div data-backdrop="static" aria-hidden="true" aria-labelledby="modal_Company" role="dialog" tabindex="-1"
+     id="modal_Company" class="modal fade " style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">选择对比公司</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <span>选择要对比的公司：</span>
+                    <select id="sel_trade" class="select_nomal sel_trade">
+                    </select>
+                    <select class="select_nomal sel_company">
+                    </select>
+                    <button id="btn_AddCC" class="btn_compare">添加</button>
+                </div>
+                <div style="margin-top: 20px;">已选择待对比的公司<span
+                        style="color:lightpink; font-size:12px;">(点击公司名称可以删除对比)</span></div>
+                <div id="list_company" class="modal_body">
+                </div>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button id="btn_SelOK" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lineContent">
+    <ul class="navLine">
+        <li><span class="mico mcur"></span><a class="mgo" href="#md1">业务信息曝光量</a></li>
+        <li><span class="mico"></span><a class="mgo" href="#md2">业务活动统计</a></li>
+        <li><span class="mico"></span><a class="mgo" href="#md3">业务地域分布</a></li>
+        <li><span class="mico"></span><a class="mgo" href="#md4">活动分布</a></li>
+        <li><span class="mico"></span><a class="mgo" href="#md5">高管曝光量</a></li>
+        <li><span class="mico"></span><a class="mgo" href="#md6">高管分工统计</a></li>
+    </ul>
+</div>
+
+
+</body>
+</html>

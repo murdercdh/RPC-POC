@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel='stylesheet' href='../stylesheets/style.css' />
+    <script type="text/javascript" src="jquery1.7.2.js"></script>
+    <script type="text/javascript" src="jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="d3.min.js"></script>
+    <script type="text/javascript" src="highcharts.js"></script>
+    <script type="text/javascript" src="road.js"></script>
+    <script type="text/javascript" src="road-data.js"></script>
+    <script type="text/javascript" src="../javascripts/temp/compareData.js"></script>
+    <style type="text/css">
+        .road-bg{
+            position: fixed;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+            background: #ffffff; /* Old browsers */
+            background: -moz-linear-gradient(top,  #ffffff 0%, #ffffff 30%, #BCC1D2 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(30%,#ffffff), color-stop(100%,#BCC1D2)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  #ffffff 0%,#ffffff 30%,#BCC1D2 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  #ffffff 0%,#ffffff 30%,#BCC1D2 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  #ffffff 0%,#ffffff 30%,#BCC1D2 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  #ffffff 0%,#ffffff 30%,#BCC1D2 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#BCC1D2',GradientType=0 ); /* IE6-9 */
+        }
+    </style>
+    <!--<script type="text/javascript">
+        $(function () {
+            var roadCtrl = new roadChart({
+                width: $(document).width() - 200,
+                height: $(document).height() - $(".title_top").height(),
+                data: eval($("#dataType").val()),
+                title: $("#dataType option:selected").text().concat('企业画像')
+            });
+            roadCtrl.draw();
+
+            $("#dataType").change(function () {
+                roadCtrl.opts.data = eval(this.value);
+                roadCtrl.opts.title = $("#dataType option:selected").text().concat('企业画像');
+                roadCtrl.draw();
+            })
+        });
+
+    </script>-->
+</head>
+<body>
+    <div class="road-bg"></div>
+    <div class="title_top" style="position: relative;">
+        <select class="select_nomal sel_trade"></select>
+        <select class="select_nomal sel_company"></select>
+
+        <!--<div class="act_container">-->
+            <!--<span class="btn_act btn_down" title="下载"></span>-->
+            <!--<span class="btn_act btn_print" title="打印"></span>-->
+        <!--</div>-->
+    </div>
+    <!--<div style="margin-left:10px;font-family:'Microsoft YaHei UI';position:absolute;z-index:1;">
+        数据来源:
+        <select id="dataType" style="width:100px;height:20px;">
+            <option value="road_data1">软通动力</option>
+            <option value="road_data2">文思海辉</option>
+        </select>
+    </div>-->
+    <div id="container-road"></div>
+</body>
+</html>

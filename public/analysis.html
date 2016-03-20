@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel='stylesheet' href='stylesheets/bootstrap.min.css'/>
+    <link rel='stylesheet' href='stylesheets/style.css'/>
+    <link rel='stylesheet' href='stylesheets/bootstrap-datetimepicker.min.css'/>
+    <script src="javascripts/jQuery.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+    <script src="javascripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="javascripts/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="javascripts/knockout.js"></script>
+    <script src="javascripts/temp/analysisData.js"></script>
+    <script src="javascripts/temp/compareData.js"></script>
+    <script src="javascripts/business/analysis.js"></script>
+</head>
+<body>
+
+<div class="analysis">
+    <!--选择部分-->
+    <div class="title_top">
+        <select class="select_nomal sel_trade">
+
+        </select>
+        <select class="select_nomal sel_company">
+
+        </select>
+        <button id="btn_AddCC" class="btn_add_company">+对比(0)</button>
+        <button id="btn_compare" class="btn_compare">开始对比</button>
+        <button id="btn_road" class="btn_mode">图文模式</button>
+        <div class="act_container">
+            <span class="btn_act btn_down" title="下载"></span>
+            <span class="btn_act btn_print" title="打印"></span>
+        </div>
+    </div>
+    <!--条件-->
+    <div class="content_container">
+        <div>
+            <input id="txt_keyword" class="input_search" placeholder="搜索关键字">
+            <button id="btn_search" class="btn_compare">搜索</button>
+            <select id="sel_City" class="select_nomal">
+            </select>
+            <select id="sel_Theme" class="select_nomal">
+            </select>
+            <select id="sel_Type" class="select_nomal">
+            </select>
+            <input id="start_Date" class="input_date" data-date-format="dd/MM/yyyy"/>—<input id="end_Date"
+                                                                                             class="input_date"
+                                                                                             data-date-format="dd/MM/yyyy"/>
+        </div>
+        <!--结果-->
+        <div class="table_container">
+            <table id="tb_result" class="table_list">
+                <thead>
+                <tr>
+                    <th style="width: 80px;">报道类别</th>
+                    <th>标题</th>
+                    <th style="width: 80px;">时间</th>
+                    <th style="width: 80px;">地点</th>
+                    <th>人物</th>
+                    <th>业务/主题</th>
+                    <th style="width: 40px;">活动</th>
+                </tr>
+                </thead>
+                <tbody data-bind="foreach:objData">
+                <tr>
+                    <td data-bind="text:newsType"></td>
+                    <td class="padding_left"><a data-bind="attr{href:url,title:title},text:title" target="_blank"></a></td>
+                    <td data-bind="text:time"></td>
+                    <td data-bind="text:location"></td>
+                    <td class="padding_left" data-bind="text:name"></td>
+                    <td data-bind="text:theme"></td>
+                    <td data-bind="text:actType"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="search_load_more">
+            <span class="more">加载更多...</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

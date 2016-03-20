@@ -11,7 +11,6 @@ router.get("/", cityCtl.get);
 router.get("/rpc",cityCtl.rpcGet);
 router.get("/searchFilterRaw",cityCtl.searchFilterRaw);
 router.get('/points',cityCtl.getPoints);
-router.get('/points/go',cityCtl.getGoPoints);
 //router.post("/", cityCtl.add);
 
 //router.route("/:id")
